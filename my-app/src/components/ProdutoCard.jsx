@@ -1,3 +1,5 @@
+import {css} from '@emotion/react'
+
 function ProdutoCard({ nome, preco, descricao, imagem }) {
   return(
       <div className="bg-white rounded-lg shadow-md p-2 m-1 max-w-sm mx-auto flex flex-col justify-between">
@@ -5,6 +7,7 @@ function ProdutoCard({ nome, preco, descricao, imagem }) {
           <img className="w-full h-48 rounded-t-lg" src={imagem} alt={nome} />
           <p className="text-sm text-gray-600 mt-2 text-center">{descricao}</p>
           <span className="text-xl font-bold text-teal-600 mt-3">{preco}</span>
+          <button className="bg-teal-600 text-white rounded-lg px-4 py-2 mt-3 text-sm">Adicionar ao carrinho</button>
       </div>
   )
 }
