@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
+import { useState } from "react";
 
-const Button = styled.button`
-  background-color: #319795;
-  color: #fff;
+const Botao = styled.button`
+  background-color: ${(props) => (props.adicionado ? "#198754" : "#6c757d")};
   border-radius: 0.5rem;
   padding-right: 1rem;
   padding-left: 1rem;
@@ -11,23 +11,22 @@ const Button = styled.button`
   margin-top: 0.75rem;
   font-size: 0.875rem;
 
-  &:hover {
-    background-color: #38b2ac;
+
   }
 `;
-const imagem = styled.img`
+const Imagem = styled.img`
   width: 100%;
   height: 12rem;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
 `;
 const Card = styled.div`
-  backgound-color: #fff;
+  background-color: #fff;
   border-radius: 0.5rem;
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  pading: 0.5rem;
+  padding: 0.5rem;
   margin: 0.25rem;
   max-width: 24rem;
   margin-right: auto;
@@ -60,18 +59,21 @@ const Preco = styled.span`
 `;
 
 function ProdutoCard({ nome, preco, descricao, imagem }) {
+  const [adicionado, setAdicionado] = useState(false);
+
+  const handleClick = () => {
+    setAdicionado(!adicionado);
+  };
+
   return (
     <Card>
-      <Titulo>
-        {nome}
-      </Titulo>
-      <imagem>
-        <img src={imagem} alt={nome} />
-      </imagem>
-
+      <Titulo>{nome}</Titulo>
+      <Imagem src={imagem} alt={nome} />
       <Descricao>{descricao}</Descricao>
       <Preco>{preco}</Preco>
-      <Button>Adicionar ao carrinho</Button>
+      <Botao adicionado={adicionado} onClick={handleClick}>
+        {adicionado ? "Remover do carrinho" : "Adicionar ao carrinho"}
+      </Botao>
     </Card>
   );
 }
