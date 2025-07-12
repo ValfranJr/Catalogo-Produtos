@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Titulo } from './ProdutoCard';
 
 function FormularioProduto({addProduto}){
     const [nome, setNome] = useState('')
@@ -18,13 +19,13 @@ function FormularioProduto({addProduto}){
     }
     return(
     <div className=''>
-        <h2 className="bg-white text-xl text-center max-w-md mx-auto my-5">Cadastro de Produtos</h2>
+        <Titulo>Cadastro de Produtos</Titulo>
         <form onSubmit={handleSubmit} className="bg-white p-6rounded-lg shadow-md max-w-md mx-auto my-5">
 
             <label htmlFor="nome" className="block text-sm font-medium text-gray-700 mb-1 ">Nome:</label>
             <input placeholder='Nome do produto' className="block w-full p-2 border rounded mb-4" type="text" name="nome" value={nome} onChange={e => setNome(e.target.value)} required/>
 
-            <label htmlFor="preco" className="block text-sm font-medium text-gray-700 mb-1">Preço (R$)</label>            
+            <label htmlFor="preco" className="block text-sm font-medium text-gray-700 mb-1">Preço (R$)</label>
             <input placeholder='Preço em R$' className="block w-full p-2 border rounded mb-4" type="text" name="preco" value={preco} onChange={e => setPreco(e.target.value)} required/>
 
             <label htmlFor="descricao" className="block text-sm font-medium text-gray-700 mb-1">Descrição:</label>
